@@ -1,0 +1,741 @@
+/**
+ *
+ * Recognizing a Sketched Task Model by Multi-StrokeGesture Recognition (XML Grammar file)
+ *
+ *  Jorge-Luis Pérez-Medina
+ *  Universidad de Las Américas, UDLA
+ *  Quito, Ecuador
+ *  jorge.perez.medina@udla.edu.ec 
+ *
+ * Please cite these papers in your publications if it helps your research:
+ *
+ * Comming soom...
+ *
+ * This software is distributed under the License (GNU GENERAL PUBLIC LICENSE) 
+ *
+ * Copyright (C) 2020, Jorge-Luis Pérez-Medina. All rights reserved. 
+ * Last updated April 29, 2020.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *
+ * This program comes with ABSOLUTELY NO WARRANTY; for details type `show w'.
+ * This is free software, and you are welcome to redistribute it
+ * under certain conditions; type `show c' for details.
+ *
+ * The hypothetical commands `show w' and `show c' should show the appropriate
+ * parts of the General Public License.  Of course, your program's commands
+ * might be different; for a GUI interface, you would use an "about box".
+ *
+ * You should also get your employer (if you work as a programmer) or school,
+ * if any, to sign a "copyright disclaimer" for the program, if necessary.
+ * For more information on this, and how to apply and follow the GNU GPL, see
+ * <https://www.gnu.org/licenses/>.
+ *
+ * The GNU General Public License does not permit incorporating your program
+ * into proprietary programs.  If your program is a subroutine library, you
+ * may consider it more useful to permit linking proprietary applications with
+ * the library. If this is what you want to do, use the GNU Lesser General
+ * Public License instead of this License.  But first, please read
+ * <https://www.gnu.org/licenses/why-not-lgpl.html>.
+ *
+**/
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE grammar SYSTEM "grammar.dtd">
+<grammar>
+	<graphic type="Rectangle">
+		<representation id="rectangle">
+			<shape id="lineL" type="Line" />
+			<shape id="lineR" type="Line" />
+			<shape id="lineT" type="Line" />
+			<shape id="lineB" type="Line" />
+			<unaryConstraint id="0" shape="lineL" condition="isVertical" threshold=".8" />
+			<unaryConstraint id="1" shape="lineR" condition="isVertical" threshold=".8" />
+			<unaryConstraint id="2" shape="lineT" condition="isHorizontal" threshold=".8" />
+			<unaryConstraint id="3" shape="lineB" condition="isHorizontal" threshold=".8" />
+			<globalConstraint id="4" shapes="lineL,lineT,lineR,lineB"
+				condition="closedLoop" threshold=".9" />
+		</representation>
+	</graphic>
+	
+	<graphic type="Rectangle">
+		<representation id="rectangle">
+			<shape id="lineL" type="Line" />
+			<shape id="lineR" type="Line" />
+			<shape id="lineT" type="Line" />
+			<shape id="lineB" type="Line" />
+			<unaryConstraint id="0" shape="lineL" condition="isVertical" threshold=".8" />
+			<unaryConstraint id="1" shape="lineR" condition="isVertical" threshold=".8" />
+			<unaryConstraint id="2" shape="lineT" condition="isHorizontal" threshold=".8" />
+			<unaryConstraint id="3" shape="lineB" condition="isHorizontal" threshold=".8" />
+			<globalConstraint id="4" shapes="lineL,lineT,lineR,lineB"
+				condition="closedLoop" threshold=".9" />
+		</representation>
+	</graphic>
+
+	<graphic type="Triangle">
+		<representation id="triangle">
+			<shape id="line1" type="Line" />
+			<shape id="line2" type="Line" />
+			<shape id="line3" type="Line" />
+			<globalConstraint id="4" shapes="line1,line2,line3"
+				condition="closedLoop" threshold=".95" />
+		</representation>
+	</graphic>
+
+	<graphic type="Label">
+		<representation id="label">
+			<shape id="Line_0" type="Line,WavyLine" />
+			<unaryConstraint id="0" shape="Line_0" condition="isHorizontal"
+				threshold="0.9" />
+		</representation>
+	</graphic>
+	 
+	<graphic type="T_Abstract">
+		<representation id="T_Abstract_0">
+			<shape id="Circle_0" type="Circle, Ellipse" />
+			<shape id="Circle_1" type="Circle, Ellipse" />
+			<binaryConstraint id="0" shape1="Circle_0"
+				condition="isInside" shape2="Circle_1" threshold="0.9" />
+		</representation>
+	</graphic>
+	
+	<graphic type="T_Interactive">
+		<representation id="T_Interactive_0">
+			<shape id="Triangle_0" type="Triangle" />
+			<shape id="Triangle_1" type="Triangle" />
+			<binaryConstraint id="0" shape1="Triangle_0"
+				condition="isInside" shape2="Triangle_1" threshold="0.9" />
+		</representation>
+		<representation id="T_Interactive_1">
+			<shape id="Rectangle_0" type="Rectangle" />
+			<shape id="Circle_0" type="Circle, Ellipse" />
+			<shape id="Rectangle_1" type="Rectangle" />
+			<binaryConstraint id="0" shape1="Circle_0" 
+			    condition="isInside" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="1" shape1="Rectangle_1" 
+			    condition="isInside" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="2" shape1="Rectangle_1" 
+			    condition="isOnTheRightOf" shape2="Circle_0" threshold="0.9" />
+		</representation>
+		<representation id="T_Interactive_2">
+			<shape id="Rectangle_0" type="Rectangle" />
+			<shape id="Circle_0" type="Circle, Ellipse" />
+			<shape id="Rectangle_1" type="Rectangle" />
+			<binaryConstraint id="0" shape1="Circle_0" 
+			    condition="isInsideOnTheLeft" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="1" shape1="Rectangle_1" 
+			    condition="isInsideOnTheRight" shape2="Rectangle_0" threshold="0.9" />
+		</representation>
+		<representation id="T_Interactive_3">
+			<shape id="Rectangle_0" type="Rectangle" />
+			<shape id="Arrow_0" type="Arrow" />
+			<shape id="Circle_0" type="Circle, Ellipse" />
+			<binaryConstraint id="0" shape1="Arrow_0" 
+				condition="isInside" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="0" shape1="Circle_0" 
+				condition="isInside" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="2" shape1="Circle_0" 
+			    condition="isOnTheRightOf" shape2="Arrow_0" threshold="0.9" />
+		</representation>
+		<representation id="T_Interactive_4">
+			<shape id="Rectangle_0" type="Rectangle" />
+			<shape id="Arrow_0" type="Arrow" />
+			<shape id="Circle_0" type="Circle, Ellipse" />
+			<binaryConstraint id="0" shape1="Arrow_0" 
+				condition="isInsideOnTheLeft" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="0" shape1="Circle_0" 
+				condition="isInsideOnTheRight" shape2="Rectangle_0" threshold="0.9" />
+		</representation>		
+	</graphic>		
+	 
+	<graphic type="T_Automatique">
+	    <representation id="T_Automatique_0">
+			<shape id="Rectangle_0" type="Rectangle" />
+			<shape id="Triangle_0" type="Triangle" />
+			<shape id="Rectangle_1" type="Rectangle" />
+			<binaryConstraint id="0" shape1="Triangle_0"
+				condition="isInside" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="1" shape1="Rectangle_1"
+				condition="isInside" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="2" shape1="Rectangle_1" 
+			    condition="isOnTheBottomOf" shape2="Triangle_0" threshold="0.9" />
+		</representation>
+		<representation id="T_Automatique_1">
+			<shape id="Rectangle_0" type="Rectangle" />
+			<shape id="Triangle_0" type="Triangle" />
+			<shape id="Rectangle_1" type="Rectangle" />
+			<binaryConstraint id="0" shape1="Triangle_0"
+				condition="isInsideOnTheTop" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="1" shape1="Rectangle_1"
+				condition="isInsideOnTheBottom" shape2="Rectangle_0" threshold="0.9" />
+		</representation>
+		<representation id="T_Automatique_2">
+			<shape id="Rectangle_0" type="Rectangle" />
+			<shape id="Circle_0" type="Circle, Ellipse" />
+			<shape id="Rectangle_1" type="Rectangle" />
+			<binaryConstraint id="0" shape1="Circle_0" 
+				condition="isInside" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="1" shape1="Rectangle_1" 
+				condition="isInside" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="2" shape1="Rectangle_1" 
+			    condition="isOnTheBottomOf" shape2="Circle_0" threshold="0.9" />
+		</representation> 
+		<representation id="T_Automatique_3">
+			<shape id="Rectangle_0" type="Rectangle" />
+			<shape id="Circle_0" type="Circle, Ellipse" />
+			<shape id="Rectangle_1" type="Rectangle" />
+			<binaryConstraint id="0" shape1="Circle_0" 
+				condition="isInsideOnTheTop" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="1" shape1="Rectangle_1" 
+				condition="isInsideOnTheBottom" shape2="Rectangle_0" threshold="0.9" />
+		</representation>
+	</graphic>
+	
+	<graphic type="T_User">
+		<representation id="T_User_0">
+			<shape id="Rectangle_0" type="Rectangle" />
+			<shape id="Circle_0" type="Circle, Ellipse" />
+			<shape id="Line_0" type="Line" />
+			<binaryConstraint id="0" shape1="Circle_0" 
+				condition="IsInside" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="1" shape1="Line_0" 
+			    condition="IsInside" shape2="Rectangle_0" threshold="0.9"/>
+			<unaryConstraint id="2" shape="Line_0" condition="isVertical" />
+			<binaryConstraint id="5" shape1="Line_0" 
+			    condition="isOnTheBottomOf" shape2="Circle_0" threshold="0.9" />
+		</representation>
+		<representation id="T_User_1">
+			<shape id="Rectangle_0" type="Rectangle" />
+			<shape id="Circle_0" type="Circle, Ellipse" />
+			<shape id="Line_0" type="Line" />
+			<binaryConstraint id="0" shape1="Circle_0" 
+				condition="IsInsideOnTheTop" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="1" shape1="Line_0" 
+			    condition="IsInsideOnTheBottom" shape2="Rectangle_0" threshold="0.9"/>
+			<unaryConstraint id="2" shape="Line_0" condition="isVertical" />
+		</representation>
+		<representation id="T_User_2">
+			<shape id="Rectangle_0" type="Rectangle" />
+			<shape id="Circle_0" type="Circle, Ellipse" />
+			<shape id="Line_0" type="Line" />
+			<shape id="Line_1" type="Line" />
+			<binaryConstraint id="0" shape1="Circle_0" 
+				condition="IsInside" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="1" shape1="Line_0" 
+			    condition="IsInside" shape2="Rectangle_0" threshold="0.9"/>
+			<unaryConstraint id="2" shape="Line_0" condition="isVertical" />
+			<binaryConstraint id="3" shape1="Line_1" 
+			    condition="IsInside" shape2="Rectangle_0" threshold="0.9"/>
+			<unaryConstraint id="4" shape="Line_1" condition="isVertical" />
+			<binaryConstraint id="5" shape1="Line_0" 
+			    condition="isOnTheBottomOf" shape2="Circle_0" threshold="0.9" />
+			<binaryConstraint id="6" shape1="Line_1" 
+			    condition="isOnTheBottomOf" shape2="Circle_0" threshold="0.9" />
+		</representation>
+		<representation id="T_User_3">
+			<shape id="Rectangle_0" type="Rectangle" />
+			<shape id="Circle_0" type="Circle, Ellipse" />
+			<shape id="Line_0" type="Line" />
+			<shape id="Line_1" type="Line" />
+			<binaryConstraint id="0" shape1="Circle_0" 
+				condition="IsInsideOnTheTop" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="1" shape1="Line_0" 
+			    condition="IsInsideOnTheBottom" shape2="Rectangle_0" threshold="0.9"/>
+			<unaryConstraint id="2" shape="Line_0" condition="isVertical" />
+			<binaryConstraint id="3" shape1="Line_1" 
+			    condition="IsInsideOnTheBottom" shape2="Rectangle_0" threshold="0.9"/>
+			<unaryConstraint id="4" shape="Line_1" condition="isVertical" />
+		</representation>
+		<representation id="T_User_4">
+			<shape id="Rectangle_0" type="Rectangle" />
+			<shape id="Circle_0" type="Circle, Ellipse" />
+			<shape id="Circle_1" type="Circle, Ellipse" />
+			<binaryConstraint id="0" shape1="Circle_0" 
+				condition="isInside" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="1" shape1="Circle_1" 
+				condition="isInside" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="5" shape1="Circle_0" 
+			    condition="isOnTheBottomOf" shape2="Circle_1" threshold="0.9" />
+		</representation>
+		<representation id="T_User_5">
+			<shape id="Rectangle_0" type="Rectangle" />
+			<shape id="Circle_0" type="Circle, Ellipse" />
+			<shape id="Circle_1" type="Circle, Ellipse" />
+			<binaryConstraint id="0" shape1="Circle_0" 
+				condition="isInsideOnTheTop" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="1" shape1="Circle_1" 
+				condition="isInsideOnTheBottom" shape2="Rectangle_0" threshold="0.9" />
+		</representation>
+	</graphic>
+	
+	<graphic type="T_AbstractAbstract">
+		<representation id="T_Abstract_0">
+			<shape id="Circle_0" type="Circle, Ellipse" />
+			<shape id="Triangle_0" type="Triangle" />
+			<binaryConstraint id="0" shape1="Triangle_0"
+				condition="isInside" shape2="Circle_0" threshold="0.9" />
+		</representation>
+	</graphic>
+	
+	<graphic type="T_AbstractUser">
+		<representation id="T_User_0">
+			<shape id="Circle_0" type="Circle, Ellipse" />
+			<shape id="Circle_1" type="Circle, Ellipse" />
+			<shape id="Line_0" type="Line" />
+			<binaryConstraint id="0" shape1="Circle_1" 
+				condition="IsInside" shape2="Circle_0" threshold="0.9" />
+			<binaryConstraint id="1" shape1="Line_0" 
+			    condition="IsInside" shape2="Circle_0" threshold="0.9"/>
+			<unaryConstraint id="2" shape="Line_0" condition="isVertical" />
+			<binaryConstraint id="5" shape1="Line_0" 
+			    condition="isOnTheBottomOf" shape2="Circle_1" threshold="0.9" />
+		</representation>
+		<representation id="T_User_1">
+			<shape id="Circle_0" type="Circle, Ellipse" />
+			<shape id="Circle_1" type="Circle, Ellipse" />
+			<shape id="Line_0" type="Line" />
+			<binaryConstraint id="0" shape1="Circle_1" 
+				condition="IsInsideOnTheTop" shape2="Circle_0" threshold="0.9" />
+			<binaryConstraint id="1" shape1="Line_0" 
+			    condition="IsInsideOnTheBottom" shape2="Circle_0" threshold="0.9"/>
+			<unaryConstraint id="2" shape="Line_0" condition="isVertical" />
+		</representation>
+		<representation id="T_User_2">
+			<shape id="Circle_0" type="Circle, Ellipse" />
+			<shape id="Circle_1" type="Circle, Ellipse" />
+			<shape id="Line_0" type="Line" />
+			<shape id="Line_1" type="Line" />
+			<binaryConstraint id="0" shape1="Circle_1" 
+				condition="IsInside" shape2="Circle_0" threshold="0.9" />
+			<binaryConstraint id="1" shape1="Line_0" 
+			    condition="IsInside" shape2="Circle_0" threshold="0.9"/>
+			<unaryConstraint id="2" shape="Line_0" condition="isVertical" />
+			<binaryConstraint id="3" shape1="Line_1" 
+			    condition="IsInside" shape2="Circle_0" threshold="0.9"/>
+			<unaryConstraint id="4" shape="Line_1" condition="isVertical" />
+			<binaryConstraint id="5" shape1="Line_0" 
+			    condition="isOnTheBottomOf" shape2="Circle_1" threshold="0.9" />
+			<binaryConstraint id="6" shape1="Line_1" 
+			    condition="isOnTheBottomOf" shape2="Circle_1" threshold="0.9" />
+		</representation>
+		<representation id="T_User_3">
+			<shape id="Circle_0" type="Circle, Ellipse" />
+			<shape id="Circle_1" type="Circle, Ellipse" />
+			<shape id="Line_0" type="Line" />
+			<shape id="Line_1" type="Line" />
+			<binaryConstraint id="0" shape1="Circle_1" 
+				condition="IsInsideOnTheTop" shape2="Circle_0" threshold="0.9" />
+			<binaryConstraint id="1" shape1="Line_0" 
+			    condition="IsInsideOnTheBottom" shape2="Circle_0" threshold="0.9"/>
+			<unaryConstraint id="2" shape="Line_0" condition="isVertical" />
+			<binaryConstraint id="3" shape1="Line_1" 
+			    condition="IsInsideOnTheBottom" shape2="Circle_0" threshold="0.9"/>
+			<unaryConstraint id="4" shape="Line_1" condition="isVertical" />
+		</representation>
+		<representation id="T_User_4">
+			<shape id="Circle_0" type="Circle, Ellipse" />
+			<shape id="Circle_1" type="Circle, Ellipse" />
+			<shape id="Circle_2" type="Circle, Ellipse" />
+			<binaryConstraint id="0" shape1="Circle_1" 
+				condition="isInside" shape2="Circle_0" threshold="0.9" />
+			<binaryConstraint id="1" shape1="Circle_2" 
+				condition="isInside" shape2="Circle_0" threshold="0.9" />
+			<binaryConstraint id="5" shape1="Circle_1" 
+			    condition="isOnTheBottomOf" shape2="Circle_2" threshold="0.9" />
+		</representation>
+		<representation id="T_User_5">
+			<shape id="Circle_0" type="Circle, Ellipse" />
+			<shape id="Circle_1" type="Circle, Ellipse" />
+			<shape id="Circle_2" type="Circle, Ellipse" />
+			<binaryConstraint id="0" shape1="Circle_0" 
+				condition="isInsideOnTheTop" shape2="Circle_0" threshold="0.9" />
+			<binaryConstraint id="1" shape1="Circle_2" 
+				condition="isInsideOnTheBottom" shape2="Circle_0" threshold="0.9" />
+		</representation>
+	</graphic>
+	
+	<graphic type="O_Enabling">
+	    <representation id="O_Enabling_0">
+		    <shape id="Rectangle_0" type="Rectangle" />
+		    <shape id="Triangle_0" type="Triangle" />
+		    <shape id="Triangle_1" type="Triangle" />
+		    <binaryConstraint id="0" shape1="Triangle_0"
+				condition="isInside" shape2="Rectangle_0"  threshold="0.9" />
+			<binaryConstraint id="1" shape1="Triangle_1"
+				condition="isInside" shape2="Rectangle_0"  threshold="0.9" />
+			<binaryConstraint id="2" shape1="Triangle_1" 
+			    condition="isOnTheRightOf" shape2="Triangle_0" threshold="0.9" />    
+		</representation>
+		<representation id="O_Enabling_1">
+		    <shape id="Rectangle_0" type="Rectangle" />
+		    <shape id="Triangle_0" type="Triangle" />
+		    <shape id="Triangle_1" type="Triangle" />
+		    <binaryConstraint id="0" shape1="Triangle_0"
+				condition="isInsideOnTheLeft" shape2="Rectangle_0"  threshold="0.9" />
+			<binaryConstraint id="1" shape1="Triangle_1"
+				condition="isInsideOnTheRight" shape2="Rectangle_0"  threshold="0.9" />
+		</representation>
+	    <representation id="O_Enabling_2">
+		    <shape id="Rectangle_0" type="Rectangle" />
+		    <shape id="Arrow_0" type="Arrow" />
+		    <shape id="Arrow_1" type="Arrow" />
+		    <binaryConstraint id="0" shape1="Arrow_0"
+				condition="isInside" shape2="Rectangle_0"  threshold="0.9" />
+			<binaryConstraint id="1" shape1="Arrow_1"
+				condition="isInside" shape2="Rectangle_0"  threshold="0.9" />
+			<binaryConstraint id="2" shape1="Arrow_1" 
+			    condition="isOnTheRightOf" shape2="Arrow_0" threshold="0.9" />    
+		</representation>
+		<representation id="O_Enabling_3">
+		    <shape id="Rectangle_0" type="Rectangle" />
+		    <shape id="Arrow_0" type="Arrow" />
+		    <shape id="Arrow_1" type="Arrow" />
+		    <binaryConstraint id="0" shape1="Arrow_0"
+				condition="isInsideOnTheLeft" shape2="Rectangle_0"  threshold="0.9" />
+			<binaryConstraint id="1" shape1="Arrow_1"
+				condition="isInsideOnTheRight" shape2="Rectangle_0"  threshold="0.9" />
+		</representation>
+	    <representation id="O_Enabling_4">
+		    <shape id="Rectangle_0" type="Rectangle" />
+		    <shape id="Line_0" type="Line" />
+		    <shape id="Line_1" type="Line" />
+		    <binaryConstraint id="0" shape1="Line_0"
+				condition="isInside" shape2="Rectangle_0"  threshold="0.9" />
+			<binaryConstraint id="1" shape1="Line_1"
+				condition="isInside" shape2="Rectangle_0"  threshold="0.9" />
+			<binaryConstraint id="2" shape1="Line_1" 
+			    condition="isOnTheRightOf" shape2="Line_0" threshold="0.9" />    
+			<unaryConstraint id="1" shape="Line_0" condition="isHorizontal" />
+			<unaryConstraint id="1" shape="Line_1" condition="isHorizontal" />    
+		</representation>
+		<representation id="O_Enabling_5">
+		    <shape id="Rectangle_0" type="Rectangle" />
+		    <shape id="Line_0" type="Line" />
+		    <shape id="Line_1" type="Line" />
+		    <binaryConstraint id="0" shape1="Line_0"
+				condition="isInsideOnTheLeft" shape2="Rectangle_0"  threshold="0.9" />
+			<binaryConstraint id="1" shape1="Line_1"
+				condition="isInsideOnTheRight" shape2="Rectangle_0"  threshold="0.9" />
+			<unaryConstraint id="1" shape="Line_0" condition="isHorizontal" />
+			<unaryConstraint id="1" shape="Line_1" condition="isHorizontal" />
+		</representation>				
+	</graphic>
+	
+	<graphic type="O_EnablingInformPassing">
+		<representation id="O_EnablingInformPassing_0">
+			<shape id="Rectangle_0" type="Rectangle" />
+			<shape id="Rectangle_1" type="Rectangle" />
+			<shape id="Triangle_0" type="Triangle" />
+			<binaryConstraint id="0" shape1="Triangle_0" 
+			    condition="isInside" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="1" shape1="Rectangle_1" 
+			    condition="isInside" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="2" shape1="Triangle_0" 
+			    condition="isOnTheRightOf" shape2="Rectangle_1" threshold="0.9" />
+		</representation>
+		<representation id="O_EnablingInformPassing_1">
+			<shape id="Rectangle_0" type="Rectangle" />
+			<shape id="Rectangle_1" type="Rectangle" />
+			<shape id="Triangle_0" type="Triangle" />
+			<binaryConstraint id="0" shape1="Triangle_0" 
+			    condition="isInsideOnTheLeft" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="1" shape1="Rectangle_1" 
+			    condition="isInsideOnTheRight" shape2="Rectangle_0" threshold="0.9" />
+		</representation>
+		<representation id="O_EnablingInformPassing_2">
+			<shape id="Rectangle_0" type="Rectangle" />
+			<shape id="Rectangle_1" type="Rectangle" />
+			<shape id="Line_0" type="Line" />
+			<binaryConstraint id="0" shape1="Line_0" 
+			    condition="isInside" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="1" shape1="Rectangle_1" 
+			    condition="isInside" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="2" shape1="Line_0" 
+			    condition="isOnTheRightOf" shape2="Rectangle_1" threshold="0.9" />
+			<unaryConstraint id="3" shape="Line_0" condition="isHorizontal" />
+		</representation>
+		<representation id="O_EnablingInformPassing_3">
+			<shape id="Rectangle_0" type="Rectangle" />
+			<shape id="Rectangle_1" type="Rectangle" />
+			<shape id="Line_0" type="Line" />
+			<binaryConstraint id="0" shape1="Line_0" 
+			    condition="isInsideOnTheLeft" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="1" shape1="Rectangle_1" 
+			    condition="isInsideOnTheRight" shape2="Rectangle_0" threshold="0.9" />
+			<unaryConstraint id="3" shape="Line_0" condition="isHorizontal" />
+		</representation>
+		<representation id="O_EnablingInformPassing_4">
+			<shape id="Rectangle_0" type="Rectangle" />
+			<shape id="Rectangle_1" type="Rectangle" />
+			<shape id="Arrow_0" type="Arrow" />
+			<binaryConstraint id="0" shape1="Arrow_0" 
+			    condition="isInside" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="1" shape1="Rectangle_1" 
+			    condition="isInside" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="2" shape1="Arrow_0" 
+			    condition="isOnTheRightOf" shape2="Rectangle_1" threshold="0.9" />
+		</representation>
+		<representation id="O_EnablingInformPassing_5">
+			<shape id="Rectangle_0" type="Rectangle" />
+			<shape id="Rectangle_1" type="Rectangle" />
+			<shape id="Arrow_0" type="Arrow" />
+			<binaryConstraint id="0" shape1="Arrow_0" 
+			    condition="isInsideOnTheLeft" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="1" shape1="Rectangle_1" 
+			    condition="isInsideOnTheRight" shape2="Rectangle_0" threshold="0.9" />
+		</representation>
+	</graphic>	
+	
+	<graphic type="O_SuspendResume">
+	    <representation id="O_SuspendResume_0">
+			<shape id="Rectangle_0" type="Rectangle" />
+			<shape id="Line_0" type="Line" />
+			<shape id="Triangle_0" type="Triangle" />
+			<binaryConstraint id="0" shape1="Triangle_0" 
+			    condition="isInside" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="1" shape1="Line_0" 
+			    condition="isInside" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="2" shape1="Triangle_0" 
+			    condition="isOnTheRightOf" shape2="Line_0" threshold="0.9" />
+			<unaryConstraint id="1" shape="Line_0" condition="isVertical" />
+		</representation>
+		<representation id="O_SuspendResume_1">
+			<shape id="Rectangle_0" type="Rectangle" />
+			<shape id="Line_0" type="Line" />
+			<shape id="Triangle_0" type="Triangle" />
+			<binaryConstraint id="0" shape1="Triangle_0" 
+			    condition="isInsideOnTheLeft" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="1" shape1="Line_0" 
+			    condition="isInsideOnTheRight" shape2="Rectangle_0" threshold="0.9" />
+			<unaryConstraint id="1" shape="Line_0" condition="isVertical" />
+		</representation>
+	</graphic>	
+	
+	<graphic type="O_Choice">
+	    <representation id="O_Choice_0">
+			<shape id="Rectangle_0" type="Rectangle" />
+			<shape id="Line_0" type="Line" />
+			<shape id="Line_1" type="Line" />
+			<binaryConstraint id="0" shape1="Line_0" 
+			    condition="isInside" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="1" shape1="Line_1" 
+			    condition="isInside" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="2" shape1="Line_1" 
+			    condition="isOnTheRightOf" shape2="Line_0" threshold="0.9" />
+			<unaryConstraint id="1" shape="Line_0" condition="isVertical" />
+			<unaryConstraint id="1" shape="Line_1" condition="isVertical" />
+		</representation>
+		<representation id="O_Choice_1">
+			<shape id="Rectangle_0" type="Rectangle" />
+			<shape id="Line_0" type="Line" />
+			<shape id="Line_1" type="Line" />
+			<binaryConstraint id="0" shape1="Line_0" 
+			    condition="isInsideOnTheLeft" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="1" shape1="Line_1" 
+			    condition="isInsideOnTheRight" shape2="Rectangle_0" threshold="0.9" />
+			<unaryConstraint id="1" shape="Line_0" condition="isVertical" />
+			<unaryConstraint id="1" shape="Line_1" condition="isVertical" />
+		</representation>
+	</graphic>	
+
+	<graphic type="O_Disabling">
+		<representation id="O_Disabling_0">
+			<shape id="Rectangle_0" type="Rectangle" />
+			<shape id="Circle_0" type="Circle, Ellipse" />
+			<shape id="Triangle_0" type="Triangle" />
+			<binaryConstraint id="0" shape1="Triangle_0" 
+			    condition="isInside" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="1" shape1="Circle_0" 
+			    condition="isInside" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="2" shape1="Triangle_0" 
+			    condition="isOnTheRightOf" shape2="Circle_0" threshold="0.9" />
+		</representation>
+		<representation id="O_Disabling_1">
+			<shape id="Rectangle_0" type="Rectangle" />
+			<shape id="Circle_0" type="Circle, Ellipse" />
+			<shape id="Triangle_0" type="Triangle" />
+			<binaryConstraint id="0" shape1="Triangle_0" 
+			    condition="isInsideOnTheLeft" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="1" shape1="Circle_0" 
+			    condition="isInsideOnTheRight" shape2="Rectangle_0" threshold="0.9" />
+		</representation>
+	</graphic>			
+	
+	<graphic type="O_Independence">
+	    <representation id="O_Independence_0">
+			<shape id="Rectangle_0" type="Rectangle" />
+			<shape id="Line_0" type="Line" />
+			<shape id="Line_1" type="Line" />
+			<shape id="Line_2" type="Line" />
+			<shape id="Line_3" type="Line" />
+			<binaryConstraint id="0" shape1="Line_0" 
+			    condition="isInside" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="1" shape1="Line_1" 
+			    condition="isInside" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="2" shape1="Line_2" 
+			    condition="isInside" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="2" shape1="Line_3" 
+			    condition="isInside" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="2" shape1="Line_1" 
+			    condition="isOnTheRightOf" shape2="Line_0" threshold="0.9" />
+			<binaryConstraint id="2" shape1="Line_2" 
+			    condition="isOnTheRightOf" shape2="Line_0" threshold="0.9" />
+			<binaryConstraint id="2" shape1="Line_2" 
+			    condition="isOnTheBottomOf" shape2="Line_1" threshold="0.9" />	
+			<binaryConstraint id="2" shape1="Line_3" 
+			    condition="isOnTheRightOf" shape2="Line_2" threshold="0.9" />    
+			<unaryConstraint id="1" shape="Line_0" condition="isVertical" />
+			<unaryConstraint id="1" shape="Line_1" condition="isHorizontal" />
+			<unaryConstraint id="1" shape="Line_2" condition="isHorizontal" />
+			<unaryConstraint id="1" shape="Line_3" condition="isVertical" />
+		</representation>
+		<representation id="O_Independence_1">
+			<shape id="Rectangle_0" type="Rectangle" />
+			<shape id="Line_0" type="Line" />
+			<shape id="Line_1" type="Line" />
+			<shape id="Line_2" type="Line" />
+			<shape id="Line_3" type="Line" />
+			
+			<binaryConstraint id="0" shape1="Line_0" 
+			    condition="isInsideOnTheLeft" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="1" shape1="Line_3" 
+			    condition="isInsideOnTheRight" shape2="Rectangle_0" threshold="0.9" />
+			
+			<binaryConstraint id="2" shape1="Line_1" 
+			    condition="isOnTheRightOf" shape2="Line_0" threshold="0.9" />
+			<binaryConstraint id="2" shape1="Line_2" 
+			    condition="isOnTheRightOf" shape2="Line_0" threshold="0.9" />
+			<binaryConstraint id="2" shape1="Line_2" 
+			    condition="isOnTheBottomOf" shape2="Line_1" threshold="0.9" />
+			<binaryConstraint id="2" shape1="Line_3" 
+			    condition="isOnTheRightOf" shape2="Line_1" threshold="0.9" />
+			<binaryConstraint id="2" shape1="Line_3" 
+			    condition="isOnTheRightOf" shape2="Line_2" threshold="0.9" />
+			
+			<unaryConstraint id="1" shape="Line_0" condition="isVertical" />
+			<unaryConstraint id="1" shape="Line_1" condition="isHorizontal" />
+			<unaryConstraint id="1" shape="Line_2" condition="isHorizontal" />
+			<unaryConstraint id="1" shape="Line_3" condition="isVertical" />
+		</representation>
+	</graphic>
+
+	<graphic type="O_Iteration">
+	    <representation id="O_Iteration_0">
+			<shape id="Rectangle_0" type="Rectangle" />
+			<shape id="Line_0" type="Line" />
+			<shape id="Circle_0" type="Circle, Ellipse" />
+			<binaryConstraint id="0" shape1="Line_0" 
+			    condition="isInside" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="1" shape1="Circle_0" 
+			    condition="isInside" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="2" shape1="Circle_0" 
+			    condition="isOnTheRightOf" shape2="Line_0" threshold="0.9" />
+			<unaryConstraint id="1" shape="Line_0" condition="isVertical" />
+		</representation>
+		<representation id="O_Iteration_1">
+			<shape id="Rectangle_0" type="Rectangle" />
+			<shape id="Line_0" type="Line" />
+			<shape id="Circle_0" type="Circle, Ellipse" />
+			<binaryConstraint id="0" shape1="Line_0" 
+			    condition="isInsideOnTheLeft" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="1" shape1="Circle_0" 
+			    condition="isInsideInUpperRightCorner" shape2="Rectangle_0" threshold="0.9" />
+			<unaryConstraint id="1" shape="Line_0" condition="isVertical" />
+		</representation>
+	</graphic>	
+	
+	<graphic type="O_IterationFinite">
+	    <representation id="O_IterationFinite_0">
+			<shape id="Rectangle_0" type="Rectangle" />
+			<shape id="Line_0" type="Line" />
+			<shape id="Rectangle_1" type="Rectangle" />
+			<binaryConstraint id="0" shape1="Line_0" 
+			    condition="isInside" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="1" shape1="Rectangle_1" 
+			    condition="isInside" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="2" shape1="Rectangle_1" 
+			    condition="isOnTheRightOf" shape2="Line_0" threshold="0.9" />
+			<unaryConstraint id="1" shape="Line_0" condition="isVertical" />
+		</representation>
+		<representation id="O_IterationFinite_1">
+			<shape id="Rectangle_0" type="Rectangle" />
+			<shape id="Line_0" type="Line" />
+			<shape id="Rectangle_1" type="Rectangle" />
+			<binaryConstraint id="0" shape1="Line_0" 
+			    condition="isInsideOnTheLeft" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="1" shape1="Rectangle_1" 
+			    condition="isInsideInLowerRightCorner" shape2="Rectangle_0" threshold="0.9" />
+			<unaryConstraint id="1" shape="Line_0" condition="isVertical" />
+		</representation>			
+	</graphic>
+	 
+	<graphic type="O_Concurrence">
+	    <representation id="O_Concurrence_0">
+			<shape id="Rectangle_0" type="Rectangle" />
+			<shape id="Line_0" type="Line" />
+			<shape id="Line_1" type="Line" />
+			<shape id="Line_2" type="Line" />
+			<binaryConstraint id="0" shape1="Line_0" 
+			    condition="isInside" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="1" shape1="Line_1" 
+			    condition="isInside" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="1" shape1="Line_2" 
+			    condition="isInside" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="2" shape1="Line_1" 
+			    condition="isOnTheRightOf" shape2="Line_0" threshold="0.9" />
+			<binaryConstraint id="2" shape1="Line_2" 
+			    condition="isOnTheRightOf" shape2="Line_1" threshold="0.9" />
+			<unaryConstraint id="1" shape="Line_0" condition="isVertical" />
+			<unaryConstraint id="1" shape="Line_1" condition="isVertical" />
+			<unaryConstraint id="1" shape="Line_2" condition="isVertical" />
+		</representation>			
+	</graphic>
+
+	<graphic type="O_ConcurrenceInformPassing">
+	    <representation id="O_ConcurrenceInformPassing_0">
+			<shape id="Rectangle_0" type="Rectangle" />
+			<shape id="Line_0" type="Line" />
+			<shape id="Rectangle_1" type="Rectangle" />
+			<shape id="Line_1" type="Line" />
+			<binaryConstraint id="0" shape1="Line_0" 
+			    condition="isInside" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="1" shape1="Rectangle_1" 
+			    condition="isInside" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="1" shape1="Line_1" 
+			    condition="isInside" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="2" shape1="Rectangle_1" 
+			    condition="isOnTheRightOf" shape2="Line_0" threshold="0.9" />
+			<binaryConstraint id="2" shape1="Line_1" 
+			    condition="isOnTheRightOf" shape2="Rectangle_1" threshold="0.9" />
+			<unaryConstraint id="1" shape="Line_0" condition="isVertical" />
+			<unaryConstraint id="1" shape="Line_1" condition="isVertical" />
+		</representation>			
+	</graphic>	
+	
+	<graphic type="O_Optional">
+	    <representation id="O_Optional_0">
+			<shape id="Rectangle_0" type="Rectangle" />
+			<shape id="Line_0" type="Line" />
+			<shape id="Line_1" type="Line" />
+			<binaryConstraint id="0" shape1="Line_0" 
+			    condition="isInside" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="1" shape1="Line_1" 
+			    condition="isInside" shape2="Rectangle_0" threshold="0.9" />
+			<binaryConstraint id="2" shape1="Line_1" 
+			    condition="isOnTheBottomOf" shape2="Line_0" threshold="0.9" />
+			<unaryConstraint id="1" shape="Line_0" condition="isHorizontal" />
+			<unaryConstraint id="1" shape="Line_1" condition="isVertical" />
+		</representation>
+	</graphic>	
+</grammar>
